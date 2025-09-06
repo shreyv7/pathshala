@@ -100,49 +100,52 @@ const Navbar = () => {
             ))}
           </motion.div>
 
-          {/* Animated CTA Button */}
-          <motion.div 
-            className="hidden md:block"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <Button 
-                variant="campus" 
-                size="sm"
-                className="hover-glow"
-                onClick={() => scrollToSection("#contact")}
-              >
-                Reserve Table
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          {/* Animated Mobile Menu Button */}
-          <motion.div
-            initial={{ opacity: 0, rotate: -90 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ delay: 1.4, duration: 0.6 }}
-          >
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden hover-glow"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          {/* Right side container with CTA Button and Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            {/* Animated CTA Button */}
+            <motion.div 
+              className="hidden md:block"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
             >
               <motion.div
-                animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                <Button 
+                  variant="campus" 
+                  size="sm"
+                  className="hover-glow"
+                  onClick={() => scrollToSection("#contact")}
+                >
+                  Reserve Table
+                </Button>
               </motion.div>
-            </Button>
-          </motion.div>
+            </motion.div>
+
+            {/* Animated Mobile Menu Button */}
+            <motion.div
+              initial={{ opacity: 0, rotate: -90 }}
+              animate={{ opacity: 1, rotate: 0 }}
+              transition={{ delay: 1.4, duration: 0.6 }}
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden hover-glow"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <motion.div
+                  animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </motion.div>
+              </Button>
+            </motion.div>
+          </div>
         </div>
 
         {/* Animated Mobile Navigation */}
