@@ -37,7 +37,7 @@ const Navbar = () => {
     <motion.nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md shadow-doodle" 
+          ? "bg-black/95 backdrop-blur-md shadow-doodle" 
           : "bg-transparent"
       }`}
       variants={navbarVariants}
@@ -60,7 +60,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              Pathshala
+              Pathsala
             </motion.h1>
             <motion.p 
               className="text-xs text-white font-sans"
@@ -149,7 +149,9 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div 
-              className="md:hidden mt-6 pb-6 bg-background/95 backdrop-blur-md rounded-lg shadow-doodle glass"
+              className={`md:hidden mt-6 pb-6 backdrop-blur-md rounded-lg shadow-doodle glass ${
+                isScrolled ? "bg-black/95" : "bg-background/95"
+              }`}
               initial={{ opacity: 0, height: 0, y: -20 }}
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -20 }}

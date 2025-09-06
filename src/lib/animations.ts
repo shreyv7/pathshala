@@ -1,4 +1,4 @@
-// Animation variants and utilities for Pathshala components
+// Animation variants and utilities for Pathsala components
 import { Variants } from "framer-motion";
 
 // Page transition variants

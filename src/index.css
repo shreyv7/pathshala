@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pathshala Café Design System - Campus Nostalgia Theme */
+/* Pathsala Café Design System - Campus Nostalgia Theme */
 
 @layer base {
   :root {
@@ -299,6 +299,16 @@
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary) / 0.8);
+  }
+
+  /* Hide Scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

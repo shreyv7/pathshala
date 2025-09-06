@@ -99,7 +99,7 @@ const About = () => {
                 style={{ opacity: textVisible ? 1 : 0, transform: textVisible ? 'translateY(0)' : 'translateY(30px)' }}
                 transition={{ delay: 0.2 }}
               >
-                <strong className="text-foreground text-gradient">Pathshala</strong> is more than a café – it's a throwback to the carefree days of campus life. With doodled walls, chalkboard corners, and playful energy, we bring back the nostalgia of classrooms, friends, and food breaks.
+                <strong className="text-foreground text-gradient">Pathsala</strong> is more than a café – it's a throwback to the carefree days of campus life. With doodled walls, chalkboard corners, and playful energy, we bring back the nostalgia of classrooms, friends, and food breaks.
               </motion.p>
               
               <motion.p 
@@ -108,7 +108,7 @@ const About = () => {
                 style={{ opacity: textVisible ? 1 : 0, transform: textVisible ? 'translateY(0)' : 'translateY(30px)' }}
                 transition={{ delay: 0.4 }}
               >
-                Located in the heart of Goa, we're here to serve comfort food with a side of memories. Whether you're cramming for exams, catching up with friends, or just need a cozy corner to work, Pathshala feels like home.
+                Located in the heart of Goa, we're here to serve comfort food with a side of memories. Whether you're cramming for exams, catching up with friends, or just need a cozy corner to work, Pathsala feels like home.
               </motion.p>
               
               <motion.div 

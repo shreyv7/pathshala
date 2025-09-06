@@ -105,7 +105,7 @@ const Footer = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              Pathshala
+              Pathsala
             </motion.h3>
             <motion.p 
               className="text-chalk-white/80 leading-relaxed"
@@ -202,7 +202,7 @@ const Footer = () => {
               initial={{ opacity: 0.8 }}
               whileHover={{ opacity: 1 }}
             >
-              Subscribe for updates, events, and special offers from Pathshala
+              Subscribe for updates, events, and special offers from Pathsala
             </motion.p>
             
             <motion.div 
@@ -253,7 +253,7 @@ const Footer = () => {
               variants={staggerItem}
               whileHover={{ scale: 1.05 }}
             >
-              © 2025 Pathshala – Taste of Campus. All Rights Reserved.
+              © 2025 Pathsala – Taste of Campus. All Rights Reserved.
             </motion.p>
             
             <motion.div 

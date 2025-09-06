@@ -73,7 +73,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            Pathshala
+            Pathsala
           </motion.span>
           <br />
           <motion.span 

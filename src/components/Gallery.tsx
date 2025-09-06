@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
-import cafeHero from "@/assets/cafe-hero.jpg";
-import doodleWall from "@/assets/doodle-wall.jpg";
-import foodSpread from "@/assets/food-spread.jpg";
-import friendsCafe from "@/assets/friends-cafe.jpg";
+import screenshot1 from "@/assets/screenshot-1.png";
+import screenshot2 from "@/assets/screenshot-2.png";
+import screenshot3 from "@/assets/screenshot-3.png";
+import screenshot4 from "@/assets/screenshot-4.png";
+import screenshot5 from "@/assets/screenshot-5.png";
+import screenshot6 from "@/assets/screenshot-6.png";
+import screenshot7 from "@/assets/screenshot-7.png";
+import screenshot8 from "@/assets/screenshot-8.png";
+import screenshot9 from "@/assets/screenshot-9.png";
 import { 
   staggerContainer, 
   staggerItem, 
@@ -14,35 +19,84 @@ import {
 
 const galleryImages = [
   {
-    src: cafeHero,
-    alt: "Cozy café interior with doodle walls and students",
-    title: "Our Cozy Interior",
-    emoji: "🏠"
+    src: screenshot1,
+    alt: "Campus vibes screenshot 1",
+    title: "Campus Moment 1",
+    emoji: "📸"
   },
   {
-    src: doodleWall,
-    alt: "Colorful student doodles on café walls",
-    title: "Doodle Wall Art",
-    emoji: "🎨"
+    src: screenshot2,
+    alt: "Campus vibes screenshot 2",
+    title: "Campus Moment 2",
+    emoji: "📸"
   },
   {
-    src: foodSpread,
-    alt: "Delicious café food and coffee spread",
-    title: "Fresh Food Daily",
-    emoji: "🍽️"
+    src: screenshot3,
+    alt: "Campus vibes screenshot 3",
+    title: "Campus Moment 3",
+    emoji: "📸"
   },
   {
-    src: friendsCafe,
-    alt: "Friends enjoying coffee and laughter",
-    title: "Making Memories",
-    emoji: "😊"
+    src: screenshot4,
+    alt: "Campus vibes screenshot 4",
+    title: "Campus Moment 4",
+    emoji: "📸"
+  },
+  {
+    src: screenshot5,
+    alt: "Campus vibes screenshot 5",
+    title: "Campus Moment 5",
+    emoji: "📸"
+  },
+  {
+    src: screenshot6,
+    alt: "Campus vibes screenshot 6",
+    title: "Campus Moment 6",
+    emoji: "📸"
+  },
+  {
+    src: screenshot7,
+    alt: "Campus vibes screenshot 7",
+    title: "Campus Moment 7",
+    emoji: "📸"
+  },
+  {
+    src: screenshot8,
+    alt: "Campus vibes screenshot 8",
+    title: "Campus Moment 8",
+    emoji: "📸"
+  },
+  {
+    src: screenshot9,
+    alt: "Campus vibes screenshot 9",
+    title: "Campus Moment 9",
+    emoji: "📸"
   }
 ];
 
 const Gallery = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { ref: headerRef, isVisible: headerVisible } = useScrollReveal({ threshold: 0.2 });
   const { ref: galleryRef, isVisible: galleryVisible } = useScrollReveal({ threshold: 0.1 });
+
+  const scrollLeft = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: -320,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        left: 320,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <section id="gallery" className="py-20 px-6 bg-gradient-chalk relative overflow-hidden">
@@ -127,113 +181,112 @@ const Gallery = () => {
           </motion.p>
         </motion.div>
         
-        {/* Animated Gallery Grid */}
+        {/* Horizontal Gallery Slider */}
         <motion.div 
           ref={galleryRef}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-          variants={staggerContainer}
-          initial="initial"
-          animate={galleryVisible ? "animate" : "initial"}
+          className="relative"
+          initial={{ opacity: 0, y: 30 }}
+          animate={galleryVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
         >
-          {galleryImages.map((image, index) => (
-            <motion.div 
-              key={index}
-              className="group relative overflow-hidden rounded-2xl chalk-glow bg-background p-4 interactive-card"
-              variants={staggerItem}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -10,
-                rotate: 2
-              }}
-              whileTap={{ scale: 0.95 }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="relative overflow-hidden rounded-xl">
-                <motion.img 
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-64 object-cover"
-                  variants={imageVariants}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                />
-                
-                {/* Animated Hover Overlay */}
-                <motion.div 
-                  className="absolute inset-0 bg-foreground/80 flex items-center justify-center"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <motion.div 
-                    className="text-center text-background p-4"
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ 
-                      y: hoveredIndex === index ? 0 : 20, 
-                      opacity: hoveredIndex === index ? 1 : 0 
-                    }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <motion.h4 
-                      className="font-handwritten text-xl mb-2"
-                      whileHover={{ scale: 1.05 }}
-                    >
-                      {image.title}
-                    </motion.h4>
-                    <motion.div 
-                      className="w-12 h-0.5 bg-chalk-blue mx-auto"
-                      initial={{ width: 0 }}
-                      animate={{ width: hoveredIndex === index ? 48 : 0 }}
-                      transition={{ duration: 0.3, delay: 0.1 }}
-                    />
-                  </motion.div>
-                </motion.div>
-              </div>
-              
-              
-              {/* Animated Decorative Elements */}
-              <motion.div 
-                className={`absolute -top-2 -right-2 w-6 h-6 bg-chalk-${index % 2 === 0 ? 'yellow' : 'pink'} rounded-full opacity-80`}
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.8, 1, 0.8]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: index * 0.3
-                }}
-              />
-              <motion.div 
-                className={`absolute -bottom-2 -left-2 w-4 h-4 bg-chalk-${index % 2 === 0 ? 'green' : 'blue'} rounded-full opacity-60`}
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.6, 1, 0.6]
-                }}
-                transition={{ 
-                  duration: 2.5,
-                  repeat: Infinity,
-                  delay: index * 0.4
-                }}
-              />
+          {/* Navigation Buttons */}
+          <motion.button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/90 backdrop-blur-sm border border-chalk-blue/20 rounded-full p-3 shadow-lg hover:bg-chalk-blue/10 transition-all duration-300"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-6 h-6 text-chalk-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </motion.button>
+          
+          <motion.button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/90 backdrop-blur-sm border border-chalk-blue/20 rounded-full p-3 shadow-lg hover:bg-chalk-blue/10 transition-all duration-300"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg className="w-6 h-6 text-chalk-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </motion.button>
 
-              {/* Corner accent */}
+          {/* Scrollable Container */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto scrollbar-hide px-16 py-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {galleryImages.map((image, index) => (
               <motion.div 
-                className="absolute top-2 left-2 w-2 h-2 bg-foreground/30 rounded-full"
-                animate={{ 
-                  scale: [1, 1.5, 1],
-                  opacity: [0.3, 0.8, 0.3]
+                key={index}
+                className="group relative flex-shrink-0 w-80 overflow-hidden rounded-2xl chalk-glow bg-background p-4 interactive-card"
+                initial={{ opacity: 0, x: 50 }}
+                animate={galleryVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -10,
+                  rotate: 2
                 }}
-                transition={{ 
-                  duration: 1.5,
-                  repeat: Infinity,
-                  delay: index * 0.2
-                }}
-              />
-            </motion.div>
-          ))}
+                whileTap={{ scale: 0.95 }}
+                onHoverStart={() => setHoveredIndex(index)}
+                onHoverEnd={() => setHoveredIndex(null)}
+              >
+                <div className="relative overflow-hidden rounded-xl">
+                  <motion.img 
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-64 object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                </div>
+                
+                {/* Animated Decorative Elements */}
+                <motion.div 
+                  className={`absolute -top-2 -right-2 w-6 h-6 bg-chalk-${index % 2 === 0 ? 'yellow' : 'pink'} rounded-full opacity-80`}
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    opacity: [0.8, 1, 0.8]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: index * 0.3
+                  }}
+                />
+                <motion.div 
+                  className={`absolute -bottom-2 -left-2 w-4 h-4 bg-chalk-${index % 2 === 0 ? 'green' : 'blue'} rounded-full opacity-60`}
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [0.6, 1, 0.6]
+                  }}
+                  transition={{ 
+                    duration: 2.5,
+                    repeat: Infinity,
+                    delay: index * 0.4
+                  }}
+                />
+
+                {/* Corner accent */}
+                <motion.div 
+                  className="absolute top-2 left-2 w-2 h-2 bg-foreground/30 rounded-full"
+                  animate={{ 
+                    scale: [1, 1.5, 1],
+                    opacity: [0.3, 0.8, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: index * 0.2
+                  }}
+                />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Additional floating elements */}

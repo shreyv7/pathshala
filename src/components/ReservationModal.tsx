@@ -85,7 +85,7 @@ const ReservationModal = ({ isOpen, onClose }: ReservationModalProps) => {
                 initial={{ opacity: 0.8 }}
                 whileHover={{ opacity: 1 }}
               >
-                Book your spot at Pathshala! ✨
+                Book your spot at Pathsala! ✨
               </motion.p>
             </motion.div>
 

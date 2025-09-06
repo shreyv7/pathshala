@@ -326,7 +326,7 @@ const MenuPopup = ({ isOpen, onClose }: MenuPopupProps) => {
               className="flex items-center justify-center gap-3"
             >
               <span className="text-5xl">🍽️</span>
-              <span className="doodle-underline">PATHSHALA</span>
+              <span className="doodle-underline">PATHSALA</span>
               <span className="text-5xl">☕</span>
             </motion.div>
             <motion.div

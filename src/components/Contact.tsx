@@ -265,7 +265,7 @@ const Contact = () => {
               initial={{ opacity: 0.8 }}
               whileHover={{ opacity: 1 }}
             >
-              Reserve your table or just drop by - we're always excited to welcome new friends to the Pathshala family!
+              Reserve your table or just drop by - we're always excited to welcome new friends to the Pathsala family!
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row gap-4 justify-center"
